@@ -6,9 +6,8 @@ from keyboard import press, release
 from config import BUTTON
 from game_interface import tap, wait
 
-
-from fishing_spots.CactoCove import CactoCove
-location = CactoCove
+from fishing_spots.WestGrassyPlains import WestGrassyPlains
+location = WestGrassyPlains
 
 
 class SomethingWentWrong(Exception):
