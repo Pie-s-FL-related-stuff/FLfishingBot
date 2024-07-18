@@ -1,8 +1,9 @@
+from enum import Enum
 from time import sleep
 import keyboard
 import mouse
 
-from config import EMULATION_SPEED, BUTTON
+from config import EMULATION_SPEED, BUTTON, TOUCH_SCREEN
 
 
 def tap(key: BUTTON):
@@ -23,9 +24,36 @@ def wait(duration: float):
     sleep(duration / EMULATION_SPEED)
 
 
-def click(x: int, y: int):
-    mouse.move(x, y, absolute=True)
+def click(coords: TOUCH_SCREEN):
+    mouse.move(*coords.value, absolute=True)
     wait(0.1)
     mouse.press(mouse.LEFT)
     wait(0.1)
     mouse.release(mouse.LEFT)
+
+
+class HOMES(Enum):
+    CASTELE = []
+    PORT_PUERTO = [BUTTON.D_DOWN]
+    AL_MAAJIK = [BUTTON.D_UP]
+    ELDERWOOD = [BUTTON.D_RIGHT]
+    LEVITANIA = [BUTTON.D_RIGHT, BUTTON.D_DOWN]
+    ORIGINS = [BUTTON.D_RIGHT, BUTTON.D_UP]
+
+
+def tp_to(home: HOMES):
+    click(TOUCH_SCREEN.MAP)
+    wait(2)
+    tap(BUTTON.D_UP)
+    wait(0.1)
+    tap(BUTTON.A)
+    wait(0.5)
+    for button in home.value:
+        tap(button)
+        wait(0.1)
+    tap(BUTTON.A)
+    wait(0.5)
+    tap(BUTTON.D_LEFT)
+    wait(0.1)
+    tap(BUTTON.A)
+    wait(5)

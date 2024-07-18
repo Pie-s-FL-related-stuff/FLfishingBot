@@ -50,7 +50,7 @@ def main():
             except SomethingWentWrong:
                 print("resetting (something went wrong)")
                 location.reset()
-                break
+                i = -1
             if i != 3:
                 location.reposition()
             i += 1

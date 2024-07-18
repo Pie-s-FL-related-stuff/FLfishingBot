@@ -1,6 +1,6 @@
 from config import BUTTON
-from fishing_spots.FishingSpot import FishingSpot
-from game_interface import tap, hold, wait, click
+from fishing_spots.FishingSpot import FishingSpot, reset_to_home
+from game_interface import tap, hold, wait, HOMES
 
 
 class CactoCove(FishingSpot):
@@ -34,29 +34,7 @@ class CactoCove(FishingSpot):
 
     @staticmethod
     def reset():
-        for _ in range(20):
-            tap(BUTTON.B)
-            wait(0.1)
-        wait(2)
-        # tp to al maajik
-        click(679, 720)
-        wait(2)
-        tap(BUTTON.D_UP)
-        wait(0.1)
-        tap(BUTTON.A)
-        wait(0.5)
-        tap(BUTTON.D_UP)
-        wait(0.1)
-        tap(BUTTON.A)
-        wait(0.5)
-        tap(BUTTON.D_LEFT)
-        wait(0.1)
-        tap(BUTTON.A)
-        wait(5)
-        # get out of home
-        hold(BUTTON.DOWN, 1)
-        tap(BUTTON.A)
-        wait(8)
+        reset_to_home(HOMES.AL_MAAJIK)
         # get to the portal
         hold([BUTTON.UP, BUTTON.RIGHT], 6.3)
         hold(BUTTON.DOWN, 2)

@@ -18,4 +18,8 @@ class BUTTON(Enum):
     D_RIGHT = "h"
 
 
-EMULATION_SPEED = 2
+EMULATION_SPEED = 1
+
+
+class TOUCH_SCREEN(Enum):
+    MAP = (679 - 180, 720 - 180)    # IDK why but the mouse.move function is off by 180 on my laptop screen, so this is temporary
